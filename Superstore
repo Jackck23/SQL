@@ -30,18 +30,18 @@ VALUES
 #For this project I used SQL to query the Superstore database to organize and derive information from. 
 
 #Use a SELECT statement to order items by price. 
-SELECT ALL*
+SELECT *
 FROM superstore
 ORDER BY price;
 
 #Show a statistic about the item prices, order data with a price greater than 100, by descending price. 
-SELECT ALL*
+SELECT *
 FROM superstore
 WHERE price>100
 ORDER BY price DESC;
 
 #Separate "Kitchen Supplies" and order average rating of that category. 
-SELECT ALL*
+SELECT *
 FROM superstore
 WHERE category is "Kitchen Supplies"
 ORDER BY average_rating DESC;
