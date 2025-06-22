@@ -1,0 +1,34 @@
+#Filter out and select top growing industries 
+SELECT *
+FROM fortune_companies 
+WHERE industry IN ('Technology', 'Financials', 'Energy');
+
+#Filter out and code average employee's tenure based on time at the company 
+SELECT avg_employee_tenure, 
+CASE WHEN avg_employee_tenure > 5 THEN 'Junior employee'
+WHEN avg_employee_tenure > 6 THEN 'Midlevel employee'
+WHEN avg_employee_tenure > 9 THEN 'Tenured employee'
+END AS EmployeeLevels
+FROM fortune_companies;
+
+#What is the average of revenue generated?
+SELECT industry, ROUND (AVG(revenue),1) as avg_revenue_billions
+FROM fortune_companies
+GROUP BY industry
+HAVING avg_revenue_billions>=200
+;
+
+#See companies who comply with US regulations on maternity leave 
+SELECT *
+FROM fortune_companies
+WHERE maternity_leave_weeks > 12 
+AND paid_time_off_days > 10;
+
+#Sort out top revenue of Fortune companies 
+SELECT company_name, 
+SUM(revenue) AS billionaire_business_revenue 
+FROM fortune_companies
+GROUP BY industry
+HAVING revenue > 200; 
+
+
